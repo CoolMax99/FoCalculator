@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calculator"></i> Enhanced Calculator</h1>
+            <p class="subtitle">Scientific functions + Unit converter</p>
+            <div class="mode-toggle">
+                <button id="basic-mode" class="mode-btn active">Basic</button>
+                <button id="scientific-mode" class="mode-btn">Scientific</button>
+                <button id="converter-mode" class="mode-btn">Converter</button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Basic/Scientific Calculator -->
+            <div id="calculator-section" class="section active">
+                <div class="calculator">
+                    <div class="display">
+                        <div class="previous-operand" id="previous-operand"></div>
+                        <div class="current-operand" id="current-operand">0</div>
+                    </div>
+                    
+                    <div class="buttons">
+                        <!-- Basic mode buttons (always visible) -->
+                        <button class="btn operator" data-action="clear">C</button>
+                        <button class="btn operator" data-action="backspace"><i class="fas fa-backspace"></i></button>
+                        <button class="btn operator" data-action="percent">%</button>
+                        <button class="btn operator" data-action="divide">/</button>
+                        
+                        <button class="btn number" data-number="7">7</button>
+                        <button class="btn number" data-number="8">8</button>
+                        <button class="btn number" data-number="9">9</button>
+                        <button class="btn operator" data-action="multiply">×</button>
+                        
+                        <button class="btn number" data-number="4">4</button>
+                        <button class="btn number" data-number="5">5</button>
+                        <button class="btn number" data-number="6">6</button>
+                        <button class="btn operator" data-action="subtract">-</button>
+                        
+                        <button class="btn number" data-number="1">1</button>
+                        <button class="btn number" data-number="2">2</button>
+                        <button class="btn number" data-number="3">3</button>
+                        <button class="btn operator" data-action="add">+</button>
+                        
+                        <button class="btn number zero" data-number="0">0</button>
+                        <button class="btn" data-action="decimal">.</button>
+                        <button class="btn operator equals" data-action="equals">=</button>
+                        
+                        <!-- Scientific buttons (hidden by default) -->
+                        <button class="btn scientific" data-action="power">x²</button>
+                        <button class="btn scientific" data-action="sqrt">√</button>
+                        <button class="btn scientific" data-action="pi">π</button>
+                        <button class="btn scientific" data-action="e">e</button>
+                        
+                        <button class="btn scientific" data-action="sin">sin</button>
+                        <button class="btn scientific" data-action="cos">cos</button>
+                        <button class="btn scientific" data-action="tan">tan</button>
+                        <button class="btn scientific" data-action="log">log</button>
+                        
+                        <button class="btn scientific" data-action="open-paren">(</button>
+                        <button class="btn scientific" data-action="close-paren">)</button>
+                        <button class="btn scientific" data-action="factorial">x!</button>
+                        <button class="btn scientific" data-action="inverse">1/x</button>
+                    </div>
+                </div>
+                
+                <div class="expression-input">
+                    <input type="text" id="expression-input" placeholder="Type expression (e.g., (15+3)*sin(45)) or click buttons above">
+                    <button id="evaluate-expression" class="evaluate-btn">Evaluate</button>
+                </div>
+            </div>
+            
+            <!-- Unit Converter Section -->
+            <div id="converter-section" class="section">
+                <div class="converter">
+                    <div class="converter-row">
+                        <div class="converter-input">
+                            <input type="text" id="converter-value" value="1" inputmode="decimal" pattern="[0-9]*\.?[0-9]*">
+                            <select id="converter-from-unit">
+                                <option value="meter">Meters</option>
+                                <option value="kilometer">Kilometers</option>
+                                <option value="centimeter">Centimeters</option>
+                                <option value="millimeter">Millimeters</option>
+                                <option value="mile">Miles</option>
+                                <option value="yard">Yards</option>
+                                <option value="foot">Feet</option>
+                                <option value="inch">Inches</option>
+                            </select>
+                        </div>
+                        
+                        <div class="converter-swap">
+                            <button id="swap-units"><i class="fas fa-exchange-alt"></i></button>
+                        </div>
+                        
+                        <div class="converter-output">
+                            <input type="text" id="converter-result" readonly>
+                            <select id="converter-to-unit">
+                                <option value="foot">Feet</option>
+                                <option value="meter">Meters</option>
+                                <option value="kilometer">Kilometers</option>
+                                <option value="centimeter">Centimeters</option>
+                                <option value="millimeter">Millimeters</option>
+                                <option value="mile">Miles</option>
+                                <option value="yard">Yards</option>
+                                <option value="inch">Inches</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="converter-category">
+                        <button class="category-btn active" data-category="length">Length</button>
+                        <button class="category-btn" data-category="weight">Weight</button>
+                        <button class="category-btn" data-category="temperature">Temperature</button>
+                        <button class="category-btn" data-category="area">Area</button>
+                        <button class="category-btn" data-category="volume">Volume</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> How to use</h3>
+                <div class="instructions-content">
+                    <div class="instruction-col">
+                        <h4>Basic Mode:</h4>
+                        <ul>
+                            <li>Click numbers and operators for calculations</li>
+                            <li><strong>C</strong> clears everything</li>
+                            <li><strong>=</strong> calculates result</li>
+                        </ul>
+                    </div>
+                    <div class="instruction-col">
+                        <h4>Scientific Mode:</h4>
+                        <ul>
+                            <li>Use <strong>sin, cos, tan, log</strong> functions</li>
+                            <li>Type expressions like <strong>(15+3)*sin(45)</strong></li>
+                            <li>Use <strong>π</strong> and <strong>e</strong> constants</li>
+                        </ul>
+                    </div>
+                    <div class="instruction-col">
+                        <h4>Converter Mode:</h4>
+                        <ul>
+                            <li>Select category (Length, Weight, etc.)</li>
+                            <li>Type numbers directly in the input field</li>
+                            <li>Choose units to convert between</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Enhanced Calculator | Expression Parser + Unit Converter | Built with HTML, CSS & JavaScript</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
