@@ -1,3 +1,4 @@
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -12,37 +13,39 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    align-items: flex-start;
+    padding: 15px;
 }
 
 .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
+/* Header styles */
 header {
     background: linear-gradient(135deg, #4285f4, #34a853);
     color: white;
-    padding: 20px;
+    padding: 20px 15px;
     text-align: center;
 }
 
 header h1 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     opacity: 0.9;
     margin-bottom: 15px;
 }
@@ -50,8 +53,9 @@ header h1 {
 .mode-toggle {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 .mode-btn {
@@ -63,6 +67,7 @@ header h1 {
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .mode-btn:hover {
@@ -74,8 +79,9 @@ header h1 {
     color: #4285f4;
 }
 
+/* Main content */
 main {
-    padding: 25px;
+    padding: 20px 15px;
 }
 
 .section {
@@ -86,10 +92,11 @@ main {
     display: block;
 }
 
+/* Calculator styles */
 .calculator {
     background-color: #f9f9f9;
     border-radius: 8px;
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 20px;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }
@@ -97,11 +104,11 @@ main {
 .display {
     background-color: #222;
     color: white;
-    padding: 20px 15px;
+    padding: 15px 12px;
     border-radius: 6px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: right;
-    min-height: 90px;
+    min-height: 85px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,34 +116,37 @@ main {
 }
 
 .previous-operand {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #aaa;
-    min-height: 20px;
+    min-height: 18px;
     word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .current-operand {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 300;
     word-break: break-all;
+    overflow-wrap: break-word;
 }
 
 .buttons {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
 }
 
 .btn {
     border: none;
     border-radius: 6px;
     padding: 12px 5px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
     background-color: white;
     color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 50px;
 }
 
 .btn:hover {
@@ -165,12 +175,14 @@ main {
 
 .scientific {
     background-color: #e8f4ff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    display: none;
 }
 
 .equals {
     background-color: #4285f4;
     color: white;
+    grid-column: span 2;
 }
 
 /* Expression input */
@@ -178,14 +190,15 @@ main {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    flex-direction: column;
 }
 
 #expression-input {
-    flex: 1;
+    width: 100%;
     padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.2s;
 }
 
@@ -200,10 +213,11 @@ main {
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 0 20px;
+    padding: 12px 20px;
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.2s;
+    font-size: 0.95rem;
 }
 
 .evaluate-btn:hover {
@@ -214,25 +228,27 @@ main {
 .converter {
     background-color: #f9f9f9;
     border-radius: 8px;
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 20px;
 }
 
 .converter-row {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .converter-input, .converter-output {
-    flex: 1;
+    width: 100%;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .converter-input input, .converter-output input {
-    flex: 1;
+    width: 100%;
     padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -247,12 +263,12 @@ main {
 }
 
 .converter-input select, .converter-output select {
+    width: 100%;
     padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
     background-color: white;
     font-size: 1rem;
-    min-width: 140px;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -261,6 +277,11 @@ main {
     outline: none;
     border-color: #4285f4;
     box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.converter-swap {
+    order: 3;
+    margin: 5px 0;
 }
 
 .converter-swap button {
@@ -282,7 +303,7 @@ main {
 .converter-category {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 15px;
     flex-wrap: wrap;
 }
@@ -291,10 +312,11 @@ main {
     background-color: #e0e0e0;
     border: none;
     border-radius: 20px;
-    padding: 8px 16px;
+    padding: 8px 14px;
     cursor: pointer;
     transition: all 0.2s;
     font-weight: 500;
+    font-size: 0.85rem;
 }
 
 .category-btn:hover {
@@ -310,105 +332,324 @@ main {
 .instructions {
     background-color: #f0f7ff;
     border-radius: 8px;
-    padding: 18px;
-
+    padding: 15px;
+    margin-top: 10px;
 }
 
 .instructions h3 {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     color: #4285f4;
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 1.1rem;
 }
 
 .instructions-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .instruction-col h4 {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #333;
+    font-size: 0.95rem;
 }
 
 .instruction-col ul {
-    padding-left: 20px;
+    padding-left: 18px;
 }
 
 .instruction-col li {
-    margin-bottom: 5px;
-    font-size: 0.9rem;
+    margin-bottom: 4px;
+    font-size: 0.85rem;
     line-height: 1.4;
 }
 
+/* Footer */
 footer {
     background-color: #f1f1f1;
     text-align: center;
-    padding: 15px;
-    font-size: 0.85rem;
+    padding: 12px 15px;
+    font-size: 0.8rem;
     color: #666;
+    line-height: 1.4;
 }
 
-/* Responsive adjustments */
-@media (max-width: 850px) {
-    .buttons {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .scientific {
-        display: none;
-    }
-    
-    .instructions-content {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .converter-row {
-        flex-direction: column;
-    }
-    
-    .converter-input, .converter-output {
-        width: 100%;
-    }
-    
-    .converter-input select, .converter-output select {
-        min-width: 120px;
-    }
-}
+/* ================= RESPONSIVE MEDIA QUERIES ================= */
 
-@media (max-width: 500px) {
-    .container {
-        border-radius: 8px;
+/* Tablet (portrait) and larger phones */
+@media (min-width: 576px) {
+    body {
+        padding: 20px;
+        align-items: center;
     }
     
     header h1 {
-        font-size: 1.5rem;
-    }
-    
-    .current-operand {
         font-size: 1.8rem;
     }
     
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .mode-btn {
+        font-size: 1rem;
+    }
+    
+    .display {
+        min-height: 90px;
+        padding: 18px 15px;
+    }
+    
+    .current-operand {
+        font-size: 2rem;
+    }
+    
+    .buttons {
+        gap: 10px;
+    }
+    
     .btn {
-        padding: 10px 5px;
-        font-size: 0.9rem;
+        font-size: 1rem;
+        padding: 14px 5px;
+        min-height: 55px;
     }
     
-    .converter-category {
-        gap: 5px;
+    .expression-input {
+        flex-direction: row;
     }
     
-    .category-btn {
-        padding: 6px 12px;
-        font-size: 0.9rem;
+    #expression-input {
+        font-size: 1rem;
+    }
+    
+    .evaluate-btn {
+        font-size: 1rem;
+        padding: 0 25px;
+        white-space: nowrap;
+    }
+    
+    .converter-row {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .converter-input, .converter-output {
+        flex: 1;
+        flex-direction: row;
     }
     
     .converter-input select, .converter-output select {
-        min-width: 100px;
+        min-width: 130px;
+    }
+    
+    .converter-swap {
+        order: 0;
+        margin: 0;
+    }
+    
+    .converter-swap button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .converter-category {
+        gap: 10px;
+    }
+    
+    .category-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .instructions-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .instruction-col {
+        flex: 1;
+        min-width: 250px;
+    }
+}
+
+/* Tablet (landscape) and small laptops */
+@media (min-width: 768px) {
+    .container {
+        max-width: 800px;
+    }
+    
+    main {
+        padding: 25px;
+    }
+    
+    .calculator {
+        padding: 20px;
+    }
+    
+    .buttons {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 10px;
+    }
+    
+    .scientific {
+        display: block;
+    }
+    
+    .equals {
+        grid-column: span 1;
+    }
+    
+    .converter {
+        padding: 20px;
+    }
+    
+    .converter-input select, .converter-output select {
+        min-width: 150px;
+    }
+    
+    .instructions-content {
+        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+    }
+    
+    .instruction-col {
+        min-width: auto;
+    }
+}
+
+/* Desktop and larger tablets */
+@media (min-width: 992px) {
+    .container {
+        max-width: 900px;
+    }
+    
+    header {
+        padding: 25px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .display {
+        padding: 20px 15px;
+        min-height: 100px;
+    }
+    
+    .previous-operand {
+        font-size: 0.9rem;
+    }
+    
+    .current-operand {
+        font-size: 2.2rem;
+    }
+    
+    .buttons {
+        gap: 12px;
+    }
+    
+    .btn {
+        padding: 15px 5px;
+        font-size: 1.05rem;
+        min-height: 60px;
+    }
+    
+    .scientific {
+        font-size: 0.9rem;
+    }
+    
+    .instructions h3 {
+        font-size: 1.2rem;
+    }
+    
+    .instruction-col h4 {
+        font-size: 1rem;
+    }
+    
+    .instruction-col li {
+        font-size: 0.9rem;
+    }
+    
+    footer {
+        font-size: 0.85rem;
+    }
+}
+
+/* Large desktop screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+    
+    .buttons {
+        gap: 15px;
+    }
+    
+    .btn {
+        padding: 16px 5px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+    header h1 {
+        font-size: 1.4rem;
+    }
+    
+    .mode-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .display {
+        padding: 12px 10px;
+        min-height: 75px;
+    }
+    
+    .current-operand {
+        font-size: 1.6rem;
+    }
+    
+    .btn {
+        padding: 10px 2px;
+        font-size: 0.9rem;
+        min-height: 45px;
+    }
+    
+    #expression-input, .evaluate-btn {
         font-size: 0.9rem;
         padding: 10px 12px;
+    }
+    
+    .category-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    footer {
+        font-size: 0.75rem;
+        padding: 10px;
+    }
+}
+
+/* Fix for iOS input zoom */
+@media screen and (max-width: 767px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Touch-friendly improvements for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .btn:hover, .mode-btn:hover, .category-btn:hover {
+        transform: none;
+    }
+    
+    .btn:active, .mode-btn:active, .category-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
     }
 }
